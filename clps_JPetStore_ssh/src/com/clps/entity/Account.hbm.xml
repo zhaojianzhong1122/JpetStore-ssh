@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2018-1-12 12:52:51 by Hibernate Tools 5.2.6.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="test" dynamic-insert="false" dynamic-update="false" mutable="true" name="com.clps.entity.Account" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="account">
+        <id name="userid" type="string">
+            <column length="80" name="userid"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="email" optimistic-lock="true" type="string" unique="false">
+            <column length="80" name="email" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="firstname" optimistic-lock="true" type="string" unique="false">
+            <column length="80" name="firstname" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="status" optimistic-lock="true" type="string" unique="false">
+            <column length="2" name="status"/>
+        </property>
+        <property generated="never" lazy="false" name="addr1" optimistic-lock="true" type="string" unique="false">
+            <column length="80" name="addr1" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="addr2" optimistic-lock="true" type="string" unique="false">
+            <column length="40" name="addr2"/>
+        </property>
+        <property generated="never" lazy="false" name="city" optimistic-lock="true" type="string" unique="false">
+            <column length="80" name="city" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="state" optimistic-lock="true" type="string" unique="false">
+            <column length="80" name="state" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="zip" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="zip" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="country" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="country" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="phone" optimistic-lock="true" type="string" unique="false">
+            <column length="80" name="phone" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

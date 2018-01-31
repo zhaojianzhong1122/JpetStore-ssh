@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2018-1-12 12:52:51 by Hibernate Tools 5.2.6.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="test" dynamic-insert="false" dynamic-update="false" mutable="true" name="com.clps.entity.Bannerdata" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="bannerdata">
+        <id name="favcategory" type="string">
+            <column length="80" name="favcategory"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="bannername" optimistic-lock="true" type="string" unique="false">
+            <column name="bannername"/>
+        </property>
+    </class>
+</hibernate-mapping>

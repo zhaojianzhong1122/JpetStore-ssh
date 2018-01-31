@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table-filter match-name="account" match-catalog="test"></table-filter>
+	<table-filter match-name="bannerdata" match-catalog="test"></table-filter>
+	<table-filter match-name="category" match-catalog="test"></table-filter>
+	<table-filter match-name="inventory" match-catalog="test"></table-filter>
+	<table-filter match-name="item" match-catalog="test"></table-filter>
+	<table-filter match-name="lineitem" match-catalog="test"></table-filter>
+	<table-filter match-name="orders" match-catalog="test"></table-filter>
+	<table-filter match-name="orderstatus" match-catalog="test"></table-filter>
+	<table-filter match-name="product" match-catalog="test"></table-filter>
+	<table-filter match-name="profile" match-catalog="test"></table-filter>
+	<table-filter match-name="sequence" match-catalog="test"></table-filter>
+	<table-filter match-name="signon" match-catalog="test"></table-filter>
+	<table-filter match-name="supplier" match-catalog="test"></table-filter>
+</hibernate-reverse-engineering>

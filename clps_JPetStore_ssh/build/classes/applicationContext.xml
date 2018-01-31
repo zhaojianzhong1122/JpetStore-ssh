@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+	<!-- 自动扫描与装配bean -->
+	<context:component-scan base-package="cn.clps"></context:component-scan>
+
+	<!-- 加载外部的properties配置文件 -->
+	<context:property-placeholder location="classpath:jdbc.properties" />
+	<!-- 配置数据库连接池（c3p0） -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<!-- 基本信息 -->
+		<property name="jdbcUrl" value="${jdbcUrl}"></property>
+		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+		<property name="user" value="${username}"></property>
+		<property name="password" value="${password}"></property>
+
+		<!-- 其他配置 -->
+		<!--初始化时获取三个连接，取值应在minPoolSize与maxPoolSize之间。Default: 3 -->
+		<property name="initialPoolSize" value="3"></property>
+		<!--连接池中保留的最小连接数。Default: 3 -->
+		<property name="minPoolSize" value="3"></property>
+		<!--连接池中保留的最大连接数。Default: 15 -->
+		<property name="maxPoolSize" value="5"></property>
+		<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
+		<property name="acquireIncrement" value="3"></property>
+		<!-- 控制数据源内加载的PreparedStatements数量。如果maxStatements与maxStatementsPerConnection均为0，则缓存被关闭。Default: 
+			0 -->
+		<property name="maxStatements" value="8"></property>
+		<!-- maxStatementsPerConnection定义了连接池内单个连接所拥有的最大缓存statements数。Default: 
+			0 -->
+		<property name="maxStatementsPerConnection" value="5"></property>
+		<!--最大空闲时间,1800秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->
+		<property name="maxIdleTime" value="1800"></property>
+	</bean>
+
+	<!-- 配置SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:/config/hibernate.cfg.xml"></property>
+	</bean>
+	<bean id="hibTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 配置声明式的事务管理（采用基于注解的方式） -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<!-- 注册DAO -->
+	<bean id="loginDao" class="com.clps.dao.impl.DaoLoginImpl">
+		<property name="ht" ref="hibTemplate"></property>
+	</bean>
+
+	<bean id="categoryDao" class="com.clps.dao.impl.DaoCategoryImpl">
+		<property name="ht" ref="hibTemplate"></property>
+	</bean>
+
+	<bean id="bannerdataDao" class="com.clps.dao.impl.DaoBannerdataImpl">
+		<property name="ht" ref="hibTemplate"></property>
+	</bean>
+
+	<bean id="registerDao" class="com.clps.dao.impl.DaoRegisterImpl">
+		<property name="ht" ref="hibTemplate"></property>
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="orderDao" class="com.clps.dao.impl.DaoOrderImpl">
+		<property name="ht" ref="hibTemplate"></property>
+	</bean>
+
+	<!-- 注册service -->
+	<bean id="loginService" class="com.clps.service.impl.LoginServiceImpl">
+		<property name="logindao" ref="loginDao"></property>
+	</bean>
+	<bean id="CategoryService" class="com.clps.service.impl.CategoryServiceImpl">
+		<property name="catedao" ref="categoryDao"></property>
+	</bean>
+
+	<bean id="BannerdataService" class="com.clps.service.impl.BannerdataServiceImpl">
+		<property name="bannerdatadao" ref="bannerdataDao"></property>
+	</bean>
+	<bean id="RegisterService" class="com.clps.service.impl.RegisterServiceImpl">
+		<property name="registerdao" ref="registerDao"></property>
+	</bean>
+	<bean id="OrderService" class="com.clps.service.impl.OrderServiceImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+		<property name="orderdao" ref="orderDao"></property>
+		<property name="catedao" ref="categoryDao"></property>
+	</bean>
+	
+	<bean id="ShoppingService" class="com.clps.service.impl.ShoppingServiceImpl">
+		<property name="catedao" ref="categoryDao"></property>
+	</bean>
+	
+	<!-- 注册action -->
+	<bean id="springLoginAction" class="com.clps.action.LoginAction"
+		scope="prototype">
+		<property name="categoryService" ref="CategoryService"></property>
+		<property name="loginService" ref="loginService"></property>
+	</bean>
+	<bean id="springCategoryAction" class="com.clps.action.CategoryAction"
+		scope="prototype">
+		<property name="categoryService" ref="CategoryService"></property>
+	</bean>
+	<bean id="springshoppingAction" class="com.clps.action.ShoppingAction"
+		scope="prototype">
+		<property name="shoppingService" ref="ShoppingService"></property>
+		<property name="categoryService" ref="CategoryService"></property>
+	</bean>
+	<bean id="springBannerdataAction" class="com.clps.action.BannerdataAction"
+		scope="prototype">
+		<property name="bannerdataService" ref="BannerdataService"></property>
+	</bean>
+	<bean id="springRegisterAction" class="com.clps.action.RegisterAction"
+		scope="prototype">
+		<property name="registerService" ref="RegisterService"></property>
+	</bean>
+	<bean id="springOrderAction" class="com.clps.action.OrderAction"
+		scope="prototype">
+		<property name="orderService" ref="OrderService"></property>
+	</bean>
+</beans>

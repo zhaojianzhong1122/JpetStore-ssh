@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="default" namespace="/" extends="json-default,struts-default">
+		<action name="loginAction" class="springLoginAction" method="login">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="dropUserAction" class="springLoginAction" method="dropUser">
+			<result name="success">/account/SignonForm.jsp</result>
+		</action>
+		<action name="categoryAction" class="springCategoryAction"
+			method="queryproduct">
+			<result name="success">/catalog/Category.jsp</result>
+		</action>
+		<action name="queryItemAction" class="springCategoryAction"
+			method="queryItem">
+			<result name="success">/catalog/Product.jsp</result>
+		</action>
+		<action name="queryLikeAction" class="springCategoryAction"
+			method="queryLike">
+			<result name="success">/catalog/SearchProducts.jsp</result>
+		</action>
+		<action name="queryQtyAction" class="springCategoryAction"
+			method="queryQty">
+			<result name="success">/catalog/Item.jsp</result>
+			<result name="error"></result>
+		</action>
+		<action name="saveShoppingAction" class="springshoppingAction"
+			method="saveCart">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="deleteShoppingAction" class="springshoppingAction"
+			method="delCart">
+			<result name="success">/cart/Cart.jsp</result>
+		</action>
+		<action name="checkoutAction" class="springshoppingAction"
+			method="checkout">
+			<result name="success">/cart/Checkout.jsp</result>
+		</action>
+		<action name="flushqtyAction" class="springshoppingAction"
+			method="flushqty">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>	
+		<action name="queryInfoByUserAction" class="springLoginAction"
+			method="queryInfoByUser">
+			<result name="success">/account/EditAccountForm.jsp</result>
+			<result name="error"></result>
+		</action>
+		<action name="saveCountAction" class="springshoppingAction"
+			method="saveCount">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="queryBannerdataAction" class="springBannerdataAction"
+			method="queryBannerdata">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="insertAction" class="springRegisterAction"
+			method="insert">
+			<result name="success">/account/SignonForm.jsp</result>
+			<result name="error"></result>
+		</action>
+		
+		<action name="newuserAction" class="springRegisterAction"
+			method="newuserid">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<action name="queryItemTwoAction" class="springCategoryAction"
+			method="queryItem">
+			<result name="success">/catalog/Product.jsp</result>
+			<result name="error"></result>
+		</action>
+		<action name="historyOrdersAction" class="springOrderAction"
+			method="historyOrders">
+			<result name="success">/order/ListOrders.jsp</result>
+			<result name="error"></result>
+		</action>
+		<action name="saveOrderAction" class="springOrderAction"
+			method="saveOrders">
+			<result name="success" type="chain">queryOrders</result>
+			<result name="error">/cart/Cart.jsp</result>
+		</action>
+		<action name="queryAccountAction" class="springOrderAction"
+			method="queryAccount">
+			<result name="success">/order/NewOrderForm.jsp</result>
+			<result name="error"></result>
+		</action>
+		<action name="queryAccountTwoAction" class="springOrderAction"
+			method="queryAccounttwo">
+			<result name="success">/order/ConfirmOrder.jsp</result>
+			<result name="error"></result>
+		</action>
+		<action name="saveProfileAction" class="springLoginAction"
+			method="saveProfile">
+			<result name="success" type="redirectAction">queryInfoByUserAction</result>
+		</action>
+		<action name="queryOrders" class="springOrderAction" method="queryOrders">
+			<result name="success">/order/ViewOrder.jsp</result>
+			<result name="error"></result>
+		</action>
+	</package>
+</struts>

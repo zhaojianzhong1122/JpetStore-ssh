@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2018-1-12 12:52:51 by Hibernate Tools 5.2.6.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="test" dynamic-insert="false" dynamic-update="false" mutable="true" name="com.clps.entity.Orders" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="orders">
+        <id name="orderid" type="int">
+            <column name="orderid"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="userid" optimistic-lock="true" type="string" unique="false">
+            <column length="80" name="userid" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="orderdate" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="10" name="orderdate"/>
+        </property>
+        <property generated="never" lazy="false" name="shipaddr1" optimistic-lock="true" type="string" unique="false">
+            <column length="80" name="shipaddr1" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="shipaddr2" optimistic-lock="true" type="string" unique="false">
+            <column length="80" name="shipaddr2"/>
+        </property>
+        <property generated="never" lazy="false" name="shipcity" optimistic-lock="true" type="string" unique="false">
+            <column length="80" name="shipcity" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="shipstate" optimistic-lock="true" type="string" unique="false">
+            <column length="80" name="shipstate" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="shipzip" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="shipzip" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="shipcountry" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="shipcountry" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="billaddr1" optimistic-lock="true" type="string" unique="false">
+            <column length="80" name="billaddr1" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="billaddr2" optimistic-lock="true" type="string" unique="false">
+            <column length="80" name="billaddr2"/>
+        </property>
+        <property generated="never" lazy="false" name="billcity" optimistic-lock="true" type="string" unique="false">
+            <column length="80" name="billcity" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="billstate" optimistic-lock="true" type="string" unique="false">
+            <column length="80" name="billstate" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="billzip" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="billzip" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="billcountry" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="billcountry" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="courier" optimistic-lock="true" type="string" unique="false">
+            <column length="80" name="courier" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="totalprice" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="totalprice" not-null="true" precision="10"/>
+        </property>
+        <property generated="never" lazy="false" name="billtofirstname" optimistic-lock="true" type="string" unique="false">
+            <column length="80" name="billtofirstname" not-null="true"/>
+        </property>
+      
+        <property generated="never" lazy="false" name="shiptofirstname" optimistic-lock="true" type="string" unique="false">
+            <column length="80" name="shiptofirstname" not-null="true"/>
+        </property>
+  
+        <property generated="never" lazy="false" name="creditcard" optimistic-lock="true" type="string" unique="false">
+            <column length="80" name="creditcard" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="exprdate" optimistic-lock="true" type="string" unique="false">
+            <column length="7" name="exprdate" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="cardtype" optimistic-lock="true" type="string" unique="false">
+            <column length="80" name="cardtype" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="locale" optimistic-lock="true" type="string" unique="false">
+            <column length="80" name="locale"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2018-1-12 12:52:51 by Hibernate Tools 5.2.6.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="test" dynamic-insert="false" dynamic-update="false" mutable="true" name="com.clps.entity.Orderstatus" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="orderstatus">
+        <composite-id class="com.clps.entity.OrderstatusId" mapped="false" name="id" unsaved-value="undefined">
+            <key-property name="orderid" type="int">
+                <column name="orderid"/>
+            </key-property>
+            <key-property name="linenum" type="int">
+                <column name="linenum"/>
+            </key-property>
+        </composite-id>
+         <property generated="never" lazy="false" name="timestamp" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="10" name="timestamp" />
+        </property>
+        <property generated="never" lazy="false" name="status" optimistic-lock="true" type="string" unique="false">
+            <column length="6" name="status" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

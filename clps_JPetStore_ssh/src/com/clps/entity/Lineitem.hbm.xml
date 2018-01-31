@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2018-1-12 12:52:51 by Hibernate Tools 5.2.6.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="test" dynamic-insert="false" dynamic-update="false" mutable="true" name="com.clps.entity.Lineitem" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="lineitem">
+        <composite-id class="com.clps.entity.LineitemId" mapped="false" name="id" unsaved-value="undefined">
+            <key-property name="orderid" type="int">
+                <column name="orderid"/>
+            </key-property>
+            <key-property name="linenum" type="int">
+                <column name="linenum"/>
+            </key-property>
+        </composite-id>
+        <property generated="never" lazy="false" name="itemid" optimistic-lock="true" type="string" unique="false">
+            <column length="10" name="itemid" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="quantity" optimistic-lock="true" type="int" unique="false">
+            <column name="quantity" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="unitprice" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="unitprice" not-null="true" precision="10"/>
+        </property>
+    </class>
+</hibernate-mapping>
